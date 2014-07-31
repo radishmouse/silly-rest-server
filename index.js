@@ -2,12 +2,16 @@
 
 
 // Basic App setup --------------------
+var path = require('path');
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 1337;
 
 var bodyParser = require('body-parser');
 app.use(bodyParser());
+
+console.log(path.join(__dirname, './static/'));
+app.use(express.static(path.join(__dirname, './static')));
 
 // Database ORM, thanks to mongoose
 var mongoose = require('mongoose');

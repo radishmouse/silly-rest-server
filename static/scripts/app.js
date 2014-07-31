@@ -1,30 +1,21 @@
-var SERVER_URL = "http://localhost:54321/products";
+'use strict';
+
+var SERVER_URL = "/api/creatures";
+
+$.post(SERVER_URL, {
+    name: "thinger" + (new Date()).getTime(),
+    type: "locat",
+    location: "here",
+    witnesses: 10,
+    date: (new Date())
+
+}, function (resp) {
+    console.log(resp);
+})
 
 // GET all the things
-
-var getProductsOperation = $.ajax({
-    url: SERVER_URL + "/products",
-    method: GET
+$.get(SERVER_URL, function (data) {
+    console.log(data);
 });
 
-getProductsOperation.done(function (productsArray) {
-    var $productTable = $("<table></table>");
-    productsArray.forEach(function (product) {
-        var $productRow = $("<tr></tr>", {
-            class: "productRow"
-        });
-        $productRow.append($("<td></td>", {
-            text: product.name,
-            class: "productName"
-        }));
-        $productRow.append($("<td></td>", {
-            text: product.description
-        }));
-        $productRow.append($("<td></td>", {
-            text: product.price
-        }));
-        $productTable.append($productRow);
-    });
-    $(document.body).append($productTable);
-});
 
