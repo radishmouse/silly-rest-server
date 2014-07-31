@@ -4,7 +4,7 @@ var SERVER_URL = "/api/creatures";
 
 $.post(SERVER_URL, {
     name: "thinger" + (new Date()).getTime(),
-    type: "locat",
+    type: "lolcat",
     location: "here",
     witnesses: 10,
     date: (new Date())
