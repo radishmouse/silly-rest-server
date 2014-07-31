@@ -1,6 +1,6 @@
 'use strict';
 
-var SERVER_URL = "/api/creatures";
+var SERVER_URL = "/api/menuitems";
 
 $.post(SERVER_URL, {
     name: "thinger" + (new Date()).getTime(),

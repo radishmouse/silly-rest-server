@@ -18,7 +18,8 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/myapp');
 
 // Our models
-var Creature = require('./models/creature');
+var Model = require('./models/menuitem');
+var modelName = 'menuitem';
 
 
 
@@ -46,71 +47,71 @@ router.get('/', function (req, res) {
 
 
 // Routes for adding to and retrieving collections
-router.route('/creatures')
+router.route('/' + modelName + 's')
     .post(function (req, res) {
-        var creature = new Creature();
+        var model = new Model();
         for (var key in req.body) {
             if (req.body.hasOwnProperty(key)) {
-                creature[key] = req.body[key];
+                model[key] = req.body[key];
             }
         }
 
-        creature.save(function (err) {
+        model.save(function (err) {
             if (err) {
                 res.send(err);
             }
 
-            res.json({ message: 'Creature created', id: creature._id })
+            res.json({ message: modelName + ' created', id: model._id })
         });
     })
     .get(function (req, res) {
-        Creature.find(function (err, creatures) {
+        Model.find(function (err, models) {
             if (err) {
                 res.send(err);
             }
 
-            res.json(creatures);
+            res.json(models);
         })
     });
 
-// Routes for a single creature
-router.route('/creatures/:creature_id')
+// Routes for a single model
+router.route('/' + modelName + 's/:id')
     .get(function (req, res) {
         console.log(req.params);
-        Creature.findById(req.params.creature_id, function (err, creature) {
+        Model.findById(req.params.id, function (err, model) {
             if (err) {
                 res.send(err);
             }
-            res.json(creature);
+            res.json(model);
         });
     })
     .put(function (req, res) {
-        Creature.findById(req.params.creature_id, function (err, creature) {
+        Model.findById(req.params.id, function (err, model) {
             if (err) {
                 res.send(err);
             }
             for (var key in req.body) {
                 if (req.body.hasOwnProperty(key)) {
-                    creature[key] = req.body[key];
+                    model[key] = req.body[key];
                 }
             }
             console.log(req.body);
-            creature.save(function (err) {
+            model.save(function (err) {
                 if (err) {
                     res.send(err);
                 }
-                res.json({ message: 'Creature updated' });
+                res.json({ message: modelName + ' updated' });
             });
         });
     })
     .delete(function (req, res) {
-        Creature.remove({
-            _id: req.params.creature_id
-        }, function (err, creature) {
+        Model.remove({
+            _id: req.params.id
+        }, function (err, model) {
             if (err) {
                 res.send(err);
             }
-            res.json({ message: 'Successfully deleted ' + creature });
+            res.json({ message: 'Successfully deleted ' + modelName + ' ' + req.params.id });
         });
     });
 
