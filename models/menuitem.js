@@ -9,7 +9,10 @@ var MenuItemSchema = new Schema({
     name: String,
     category: String,
     description: String,
-    ingredients: String,
+    ingredients: {
+        type: String,
+        required: true
+    },
     price: {
         type: Number,
         min: 1
@@ -23,7 +26,8 @@ var MenuItemSchema = new Schema({
 });
 
 var MenuItemModel = mongoose.model('MenuItem', MenuItemSchema);
-MenuItemModel.schema.path('ingredients').validate(function (value) {
-    return value && (value.length > 0);
-}, 'Ingredients must be specified');
+// MenuItemModel.schema.path('ingredients').validate(function (value) {
+//     console.log('ingredients is' + value);
+//     return (value != null) && (value.length > 0);
+// }, 'Ingredients must be specified');
 module.exports = MenuItemModel;

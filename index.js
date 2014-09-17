@@ -61,10 +61,10 @@ router.route('/' + modelName + 's')
 
         model.save(function (err) {
             if (err) {
-                res.send(err);
+                return res.send(err);
             }
 
-            res.json({ message: modelName + ' created', id: model._id })
+            return res.json({ message: modelName + ' created', id: model._id })
         });
     })
     .get(function (req, res) {
