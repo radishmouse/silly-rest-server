@@ -122,4 +122,4 @@ router.route('/' + modelName + 's/:id')
 // Fire it up! Fire it up!------------------------------
 app.use('/api', router);
 app.listen(port, '0.0.0.0');
-console.log('Now you are leet: ' + port);
+console.log('Now you are 1337: ' + port);

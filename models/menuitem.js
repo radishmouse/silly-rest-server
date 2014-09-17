@@ -22,4 +22,8 @@ var MenuItemSchema = new Schema({
     availability: String
 });
 
-module.exports = mongoose.model('MenuItem', MenuItemSchema);
+var MenuItemModel = mongoose.model('MenuItem', MenuItemSchema);
+MenuItemModel.schema.path(ingredients).validate(function (value) {
+    return value && (value.length > 0);
+});
+module.exports = MenuItemModel;
