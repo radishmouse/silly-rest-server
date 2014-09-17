@@ -23,7 +23,7 @@ var MenuItemSchema = new Schema({
 });
 
 var MenuItemModel = mongoose.model('MenuItem', MenuItemSchema);
-MenuItemModel.schema.path(ingredients).validate(function (value) {
+MenuItemModel.schema.path('ingredients').validate(function (value) {
     return value && (value.length > 0);
-});
+}, 'Ingredients must be specified');
 module.exports = MenuItemModel;
