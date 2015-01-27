@@ -7,6 +7,8 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 1337;
 
+var makeRoutes = require('./router-maker');
+
 var bodyParser = require('body-parser');
 app.use(bodyParser());
 
@@ -21,10 +23,8 @@ var mongoose = require('mongoose');
 mongoose.connect(MONGO_URI);
 
 // Our models
-var Model = require('./models/menuitem');
-var modelName = 'menuitem';
-
-
+var MenuItem = require('./models/menuitem');
+var Creature = require('./models/creature');
 
 // Routing --------------------------------
 var router = express.Router();
@@ -49,74 +49,9 @@ router.get('/', function (req, res) {
 });
 
 
-// Routes for adding to and retrieving collections
-router.route('/' + modelName + 's')
-    .post(function (req, res) {
-        var model = new Model();
-        for (var key in req.body) {
-            if (req.body.hasOwnProperty(key)) {
-                model[key] = req.body[key];
-            }
-        }
-
-        model.save(function (err) {
-            if (err) {
-                return res.send(err);
-            }
-
-            return res.json({ message: modelName + ' created', id: model._id })
-        });
-    })
-    .get(function (req, res) {
-        Model.find(function (err, models) {
-            if (err) {
-                res.send(err);
-            }
-
-            res.json(models);
-        })
-    });
-
-// Routes for a single model
-router.route('/' + modelName + 's/:id')
-    .get(function (req, res) {
-        console.log(req.params);
-        Model.findById(req.params.id, function (err, model) {
-            if (err) {
-                res.send(err);
-            }
-            res.json(model);
-        });
-    })
-    .put(function (req, res) {
-        Model.findById(req.params.id, function (err, model) {
-            if (err) {
-                res.send(err);
-            }
-            for (var key in req.body) {
-                if (req.body.hasOwnProperty(key)) {
-                    model[key] = req.body[key];
-                }
-            }
-            console.log(req.body);
-            model.save(function (err) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json({ message: modelName + ' updated' });
-            });
-        });
-    })
-    .delete(function (req, res) {
-        Model.remove({
-            _id: req.params.id
-        }, function (err, model) {
-            if (err) {
-                res.send(err);
-            }
-            res.json({ message: 'Successfully deleted ' + modelName + ' ' + req.params.id });
-        });
-    });
+// Dynamically create routes for models
+makeRoutes(router, MenuItem, 'menuitem');
+makeRoutes(router, Creature, 'creature');
 
 
 // Fire it up! Fire it up!------------------------------
