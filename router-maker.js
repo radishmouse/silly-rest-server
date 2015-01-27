@@ -24,7 +24,7 @@ module.exports = function (router, Model, modelName) {
             Model.find(function (err, models) {
                 var key = (modelName + 's');
                 var payload = {};
-                payload[key] = JSON.stringify(models);
+                payload[key] = models;
 
                 if (err) {
                     res.send(err);
