@@ -22,11 +22,15 @@ module.exports = function (router, Model, modelName) {
         })
         .get(function (req, res) {
             Model.find(function (err, models) {
+                var key = (modelName + 's');
+                var payload = {};
+                payload[key] = JSON.stringify(models);
+
                 if (err) {
                     res.send(err);
                 }
 
-                res.json(models);
+                res.json(payload);
             });
         });
 
