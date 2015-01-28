@@ -6,12 +6,13 @@ module.exports = function (router, Model, modelName) {
     router.route('/' + modelName + 's')
         .post(function (req, res) {
             var model = new Model();
-            for (var key in req.body) {
-                if (req.body.hasOwnProperty(key)) {
-                    model[key] = req.body[key];
+            var data = req.body[modelName];
+            for (var key in data) {
+                if (data.hasOwnProperty(key)) {
+                    model[key] = data[key];
+                } else {
                 }
             }
-
             model.save(function (err) {
                 if (err) {
                     return res.send(err);
