@@ -6,10 +6,9 @@ module.exports = function (router, Model, modelName) {
     router.route('/' + modelName + 's')
         .post(function (req, res) {
             var model = new Model();
-            var data = res.body[modelName];
-            for (var key in data) {
-                if (data.hasOwnProperty(key)) {
-                    model[key] = data[key];
+            for (var key in req.body) {
+                if (req.body.hasOwnProperty(key)) {
+                    model[key] = req.body[key];
                 }
             }
 
@@ -32,6 +31,7 @@ module.exports = function (router, Model, modelName) {
                 if (err) {
                     res.send(err);
                 }
+
                 res.json(payload);
             });
         });
