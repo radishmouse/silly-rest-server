@@ -16,8 +16,10 @@ module.exports = function (router, Model, modelName) {
                 if (err) {
                     return res.send(err);
                 }
-
-                return res.json({ message: modelName + ' created', id: model._id });
+                var key = modelName;
+                var obj = {};
+                obj[key] = model;
+                return res.json(obj);
             });
         })
         .get(function (req, res) {
@@ -25,7 +27,6 @@ module.exports = function (router, Model, modelName) {
                 if (err) {
                     res.send(err);
                 }
-
                 res.json(models);
             });
         });
