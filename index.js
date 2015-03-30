@@ -26,6 +26,9 @@ mongoose.connect(MONGO_URI);
 var MenuItem = require('./models/menuitem');
 var Creature = require('./models/creature');
 var Sighting = require('./models/sighting');
+var Cryptid = require('./models/cryptid');
+var Witness = require('./models/witness');
+
 
 // Routing --------------------------------
 var router = express.Router();
@@ -54,8 +57,8 @@ router.get('/', function (req, res) {
 makeRoutes(router, MenuItem, 'menuitem');
 makeRoutes(router, Creature, 'creature');
 makeRoutes(router, Sighting, 'sighting');
-// makeRoutes(router, Cryptid, 'cryptid');
-// makeRoutes(router, Witness, 'witness');
+makeRoutes(router, Cryptid, 'cryptid');
+makeRoutes(router, Witness, 'witness');
 
 
 // Fire it up! Fire it up!------------------------------
