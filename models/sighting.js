@@ -10,9 +10,10 @@ var SightingSchema = new Schema({
     creature: { type:Schema.ObjectId, ref:"Cryptid", childPath:"sightings" },
     date: Date,
     location: String,
-    witness: Number
+    witnesses: [{ type:Schema.ObjectId, ref:"Witness" }]
 });
 SightingSchema.plugin(relationship, { relationshipPathName:'creature' });
+SightingSchema.plugin(relationship, { relationshipPathName:'witnesses' });
 
 module.exports = mongoose.model('Sighting', SightingSchema);
 
