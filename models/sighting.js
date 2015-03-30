@@ -7,7 +7,7 @@ var relationship = require("mongoose-relationship");
 
 
 var SightingSchema = new Schema({
-    creature: { type:Schema.ObjectId, ref:"Cryptid", childPath:"sightings" }
+    creature: { type:Schema.ObjectId, ref:"Cryptid", childPath:"sightings" },
     date: Date,
     location: String,
     witness: Number
