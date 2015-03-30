@@ -25,6 +25,7 @@ mongoose.connect(MONGO_URI);
 // Our models
 var MenuItem = require('./models/menuitem');
 var Creature = require('./models/creature');
+var Sighting = require('./models/sighting');
 
 // Routing --------------------------------
 var router = express.Router();
