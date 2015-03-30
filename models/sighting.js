@@ -10,7 +10,7 @@ var SightingSchema = new Schema({
     creature: { type:Schema.ObjectId, ref:"Cryptid", childPath:"sightings" },
     date: Date,
     location: String,
-    witnesses: [{ type:Schema.ObjectId, ref:"Witness" }]
+    witnesses: [{ type:Schema.ObjectId, ref:"Witness", childPath:"sightings" }]
 });
 SightingSchema.plugin(relationship, { relationshipPathName:'creature' });
 SightingSchema.plugin(relationship, { relationshipPathName:'witnesses' });
