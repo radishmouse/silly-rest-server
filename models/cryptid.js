@@ -1,5 +1,5 @@
 
-// models creatures.js
+// models cryptid.js
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
@@ -10,4 +10,4 @@ var CryptidSchema = new Schema({
     type: String
 });
 
-module.exports = mongoose.model('Cryptid', CreatureSchema);
+module.exports = mongoose.model('Cryptid', CryptidSchema);

@@ -1,5 +1,5 @@
 
-// models creatures.js
+// models witness.js
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
@@ -10,4 +10,4 @@ var WitnessSchema = new Schema({
     lname: String
 });
 
-module.exports = mongoose.model('Witness', CreatureSchema);
+module.exports = mongoose.model('Witness', WitnessSchema);
