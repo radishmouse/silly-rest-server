@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-var SighitngSchema = new Schema({
+var SightingSchema = new Schema({
     cryptid: Number,
     date: Date,
     location: String,
