@@ -52,7 +52,7 @@ router.get('/', function (req, res) {
 // Dynamically create routes for models
 makeRoutes(router, MenuItem, 'menuitem');
 makeRoutes(router, Creature, 'creature');
-// makeRoutes(router, Sighting, 'sighting');
+makeRoutes(router, Sighting, 'sighting');
 // makeRoutes(router, Cryptid, 'cryptid');
 // makeRoutes(router, Witness, 'witness');
 
