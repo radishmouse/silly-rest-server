@@ -7,6 +7,7 @@ module.exports = function (router, Model, modelName) {
         .post(function (req, res) {
             var model = new Model();
             var data = req.body[modelName];
+
             for (var key in data) {
                 if (data.hasOwnProperty(key)) {
                     model[key] = data[key];
@@ -45,7 +46,11 @@ module.exports = function (router, Model, modelName) {
                 if (err) {
                     res.send(err);
                 }
-                res.json(model);
+                var key = (modelName);
+                var payload = {};
+                payload[key] = model;
+                // console.log(payload);
+                res.json(payload);
             });
         })
         .put(function (req, res) {
