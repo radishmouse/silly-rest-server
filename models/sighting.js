@@ -7,12 +7,12 @@ var relationship = require("mongoose-relationship");
 
 
 var SightingSchema = new Schema({
-    cryptid: { type:Schema.ObjectId, ref:"Cryptid", childPath:"sightings" },
+    cryptid_id: { type:Schema.ObjectId, ref:"Cryptid", childPath:"sightings" },
     date: Date,
     location: String,
     witnesses: [{ type:Schema.ObjectId, ref:"Witness", childPath:"sightings" }]
 });
-SightingSchema.plugin(relationship, { relationshipPathName:'cryptid' });
+SightingSchema.plugin(relationship, { relationshipPathName:'cryptid_id' });
 SightingSchema.plugin(relationship, { relationshipPathName:'witnesses' });
 
 module.exports = mongoose.model('Sighting', SightingSchema);
