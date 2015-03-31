@@ -58,12 +58,14 @@ module.exports = function (router, Model, modelName) {
                 if (err) {
                     res.send(err);
                 }
-                for (var key in req.body) {
-                    if (req.body.hasOwnProperty(key)) {
-                        model[key] = req.body[key];
+                var modelNameKey = modelName;
+
+                for (var key in req.body[modelNameKey]) {
+                    if (req.body[modelNameKey].hasOwnProperty(key)) {
+                        model[key] = req.body[modelNameKey][key];
                     }
                 }
-                console.log(req.body);
+                console.log(req.body[modelNameKey]);
                 model.save(function (err) {
                     if (err) {
                         res.send(err);
