@@ -68,7 +68,11 @@ module.exports = function (router, Model, modelName) {
                     if (err) {
                         res.send(err);
                     }
-                    res.json({ message: modelName + ' updated' });
+                    var key = (modelName);
+                    var payload = {};
+                    payload[key] = model;
+                    payload.message = modelName + ' updated';
+                    res.json(payload);
                 });
             });
         })
