@@ -13,7 +13,6 @@ module.exports = function (router, Model, modelName) {
                     model[key] = data[key];
                 }
             }
-            model[key].created_at = new Date();
             if(modelName === 'sighting' && !model[key].sighted_at) {
                 model[key].sighted_at = new Date();
             }
