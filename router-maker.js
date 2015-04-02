@@ -11,8 +11,11 @@ module.exports = function (router, Model, modelName) {
             for (var key in data) {
                 if (data.hasOwnProperty(key)) {
                     model[key] = data[key];
-                } else {
                 }
+            }
+            model[key].created_at = new Date();
+            if(modelName === 'sighting' && !model[key].sighted_at) {
+                model[key].sighted_at = new Date();
             }
             model.save(function (err) {
                 if (err) {
