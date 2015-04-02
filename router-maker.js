@@ -13,9 +13,6 @@ module.exports = function (router, Model, modelName) {
                     model[key] = data[key];
                 }
             }
-            if(modelName === 'sighting' && !model[key].sighted_at) {
-                model[key].sighted_at = new Date();
-            }
             model.save(function (err) {
                 if (err) {
                     return res.send(err);
@@ -23,6 +20,7 @@ module.exports = function (router, Model, modelName) {
                 var key = modelName;
                 var obj = {};
                 obj[key] = model;
+                console.log(model);
                 return res.json(obj);
             });
         })

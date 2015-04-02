@@ -8,7 +8,8 @@ var relationship = require("mongoose-relationship");
 
 var SightingSchema = new Schema({
     cryptid: { type:Schema.ObjectId, ref:"Cryptid", childPath:"sightings" },
-    date: Date,
+    created_at: { type: Date, default: Date.now },
+    sighted_at: { type: Date, default: Date.now },
     location: String,
     witnesses: [{ type:Schema.ObjectId, ref:"Witness", childPath:"sightings" }]
 });
