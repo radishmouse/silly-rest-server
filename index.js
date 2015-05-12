@@ -58,7 +58,7 @@ makeRoutes(router, MenuItem, 'menuitem');
 makeRoutes(router, Creature, 'creature');
 makeRoutes(router, Cryptid, 'cryptid');
 makeRoutes(router, Sighting, 'sighting');
-makeRoutes(router, Witness, 'witness');
+makeRoutes(router, Witness, 'witness', 'witnesses');
 
 
 // Fire it up! Fire it up!------------------------------

@@ -1,9 +1,13 @@
 
-module.exports = function (router, Model, modelName) {
+module.exports = function (router, Model, modelName, pluralName) {
     'use strict';
 
     // Routes for adding to and retrieving collections
-    router.route('/' + modelName + 's')
+    var modelPath = modelName + 's';
+    if(pluralName){
+        modelPath = pluralName;
+    }
+    router.route('/' + modelPath)
         .post(function (req, res) {
             var model = new Model();
             var data = req.body[modelName];
@@ -26,7 +30,7 @@ module.exports = function (router, Model, modelName) {
         })
         .get(function (req, res) {
             Model.find(function (err, models) {
-                var key = (modelName + 's');
+                var key = (modelPath);
                 var payload = {};
                 payload[key] = models;
 
@@ -39,7 +43,7 @@ module.exports = function (router, Model, modelName) {
         });
 
     // Routes for a single model
-    router.route('/' + modelName + 's/:id')
+    router.route('/' + modelPath + '/:id')
         .get(function (req, res) {
             console.log(req.params);
             Model.findById(req.params.id, function (err, model) {
