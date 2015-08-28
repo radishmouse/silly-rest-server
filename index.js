@@ -26,8 +26,6 @@ mongoose.connect(MONGO_URI);
 
 // Our models
 var models = {
-    MenuItem : require('./models/menuitem'),
-    Creature : require('./models/creature'),
     Cryptid : require('./models/cryptid'),
     Sighting : require('./models/sighting'),
     Witness : require('./models/witness')
