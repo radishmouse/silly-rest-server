@@ -52,6 +52,7 @@ var Front = new API.httpStrategies.Express(Controller, Docs);
 var apiReqHandler = Front.apiRequest.bind(Front);
 
 var router = express.Router();
+
 // some really basic logging middleware
 router.use(function (req, res, next) {
     console.log('Accessing ' + req.path);
@@ -60,17 +61,18 @@ router.use(function (req, res, next) {
 
 // This is for cross domain fun
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    // intercept OPTIONS method
-    if ('OPTIONS' == req.method) {
-      res.sendStatus(200);
-    }
-    else {
-      next();
-    }
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, Content-Length, X-Requested-With');
+  // intercept OPTIONS method
+  if ('OPTIONS' == req.method) {
+    res.status(200).send('OK');
+  } else {
+    next();
+  }
 });
+
+
 
 // Now, add the routes.
 // To do this in a more scalable and configurable way, check out
