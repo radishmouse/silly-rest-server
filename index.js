@@ -46,7 +46,7 @@ var Controller = new API.controllers.API(registry);
 var Docs = new API.controllers.Documentation(registry, {name: 'Tracker API'});
 
 // Initialize the express app + front controller.
-var app = express();
+// var app = express();
 
 var Front = new API.httpStrategies.Express(Controller, Docs);
 var apiReqHandler = Front.apiRequest.bind(Front);
