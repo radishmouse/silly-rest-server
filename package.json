@@ -8,11 +8,14 @@
   },
   "author": "",
   "license": "BSD-2-Clause",
+  "engines": {
+    "node": "0.12.x"
+  },
   "dependencies": {
     "body-parser": "~1.14.0",
     "express": "~4.13.3",
-    "json-api": "^2.8.1",
-    "mongoose": "~4.0.0",
+    "json-api": "^2.10.0",
+    "mongoose": "~4.1.8",
     "mongoose-relationship": "^0.1.4"
   }
 }
