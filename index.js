@@ -14,8 +14,8 @@ var makeRoutes = require('./router-maker');
 // var bodyParser = require('body-parser');
 // app.use(bodyParser());
 
-console.log(path.join(__dirname, './static/'));
-app.use(express.static(path.join(__dirname, './static')));
+// console.log(path.join(__dirname, './static/'));
+// app.use(express.static(path.join(__dirname, './static')));
 
 var MONGO_URI = "mongodb://heroku_app27990738:688ajf79f2s5oa77kg8q324rce@ds053419.mongolab.com:53419/heroku_app27990738";
 // var MONGO_URI = 'mongodb://localhost/myapp';
