@@ -51,13 +51,13 @@ var Docs = new API.controllers.Documentation(registry, {name: 'Tracker API'});
 var Front = new API.httpStrategies.Express(Controller, Docs);
 var apiReqHandler = Front.apiRequest.bind(Front);
 
-var router = express.Router();
+// var router = express.Router();
 
-// some really basic logging middleware
-router.use(function (req, res, next) {
-    console.log('Accessing ' + req.path);
-    next();
-});
+// // some really basic logging middleware
+// router.use(function (req, res, next) {
+//     console.log('Accessing ' + req.path);
+//     next();
+// });
 
 // This is for cross domain fun
 app.use(function(req, res, next) {
