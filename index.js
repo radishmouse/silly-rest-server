@@ -64,7 +64,7 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   // res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.header('Access-Control-Allow-Methods', 'GET,PATCH,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, Content-Length, X-Requested-With');
+  res.header('Access-Control-Allow-Headers', '*');
   // intercept OPTIONS method
   if ('OPTIONS' == req.method) {
     res.status(200).send('OK');
@@ -79,7 +79,7 @@ app.use(function(req, res, next) {
 // To do this in a more scalable and configurable way, check out
 // http://github.com/ethanresnick/express-simple-router. To protect some
 // routes, check out http://github.com/ethanresnick/express-simple-firewall.
-app.get("/", Front.docsRequest.bind(Front));
+// app.get("/", Front.docsRequest.bind(Front));
 app.route("/api/:type(sightings|cryptids|witnesses)")
   .get(apiReqHandler).post(apiReqHandler).patch(apiReqHandler);
 app.route("/api/:type(sightings|cryptids|witnesses)/:id")
