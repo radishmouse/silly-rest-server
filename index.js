@@ -11,8 +11,8 @@ var APIError = API.types.Error;
 
 var makeRoutes = require('./router-maker');
 
-var bodyParser = require('body-parser');
-app.use(bodyParser());
+// var bodyParser = require('body-parser');
+// app.use(bodyParser());
 
 console.log(path.join(__dirname, './static/'));
 app.use(express.static(path.join(__dirname, './static')));
