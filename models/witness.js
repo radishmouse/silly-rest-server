@@ -6,8 +6,8 @@ var Schema = mongoose.Schema;
 var relationship = require("mongoose-relationship");
 
 var WitnessSchema = new Schema({
-    fname: String,
-    lname: String,
+    f_name: String,
+    l_name: String,
     sightings:[{ type:Schema.ObjectId, ref:"Sighting", childPath:"witnesses" }]
 });
 
